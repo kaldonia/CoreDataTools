@@ -92,6 +92,14 @@
     return _managedObjectModel;
 }
 
+
+-(void)deleteModelFile
+{
+    NSURL *storeURL = [[self.class applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",self.modelName]];
+
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+}
+
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
@@ -114,8 +122,7 @@
               error:&error]) {
 
             NSLog(@"Performing automatic lightweight migration failed. Deleting %@", storeURL);
-            
-            [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+            [self deleteModelFile];
 
             if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

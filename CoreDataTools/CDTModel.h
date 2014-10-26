@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSString *modelName;
 
 - (id)initWithModelName:(NSString *)modelName;
+- (void)deleteModelFile;
 - (void)save;
 - (NSArray *)fetch:(NSString *)fetchRequestName;
 - (NSArray *)fetchByName:(NSString *)entityName withPredicate:(NSPredicate *)predicate;

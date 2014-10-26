@@ -168,6 +168,9 @@
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+
+        default:
+            break;
     }
 }
 
@@ -256,7 +259,7 @@
     CGPoint location = [recognizer locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"handleLongPress %@, state:%ld",[cell description],recognizer.state);
+    NSLog(@"handleLongPress %@, state:%d",[cell description],recognizer.state);
 }
 
 -(void)handlePan:(UIPanGestureRecognizer *)recognizer
@@ -264,7 +267,7 @@
     CGPoint location = [recognizer locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"handlePan %@, state:%ld",[cell description],recognizer.state);
+    NSLog(@"handlePan %@, state:%d",[cell description],recognizer.state);
 }
 
 -(void)handleTap:(UITapGestureRecognizer *)recognizer
@@ -272,7 +275,7 @@
     CGPoint location = [recognizer locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"handleTap %@, state:%ld",[cell description],recognizer.state);
+    NSLog(@"handleTap %@, state:%d",[cell description],recognizer.state);
 }
 
 @end
